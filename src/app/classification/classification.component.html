@@ -1,0 +1,135 @@
+<div class="parent">
+    <div class="col-md-4">
+        <div [hidden]="submitted">
+            <div class="form-group">
+                <h2>Mobile price classification</h2>
+                <hr>
+                <p>Please, enter mobile phone specifications and submit the form.</p>
+                <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+                    <label for="battery_power">Battery power</label>
+                    <input type="text" class="form-control" id="battery_power" name="battery_power" placeholder="mAh"
+                        ngModel required><br>
+
+                    <label for="blue">Bluetooth</label>
+                    <select class="form-control" id="blue" name="blue" ngModel required>
+                        <option *ngFor="let specOption of specOptions" [value]="specOption">{{ specOption }}</option>
+                    </select><br>
+
+                    <label for="clock_speed">Clock speed</label>
+                    <input type="text" class="form-control" id="clock_speed" name="clock_speed" placeholder="GHz"
+                        ngModel required><br>
+
+                    <label for="dual_sim">Dual Sim</label>
+                    <select class="form-control" id="dual_sim" name="dual_sim" ngModel required>
+                        <option *ngFor="let specOption of specOptions" [value]="specOption">{{ specOption }}</option>
+                    </select><br>
+
+                    <label for="fc">Front camera</label>
+                    <input type="text" class="form-control" id="fc" name="fc" placeholder="megapixels" ngModel
+                        required><br>
+
+                    <label for="four_g">4G</label>
+                    <select class="form-control" id="four_g" name="four_g" ngModel required>
+                        <option *ngFor="let specOption of specOptions" [value]="specOption">{{ specOption }}</option>
+                    </select><br>
+
+                    <label for="int_memory">Internal memory</label>
+                    <input type="text" class="form-control" id="int_memory" name="int_memory" placeholder="GB" ngModel
+                        required><br>
+
+                    <label for="m_dep">Depth</label>
+                    <input type="text" class="form-control" id="m_dep" name="m_dep" placeholder="centimeters" ngModel
+                        required><br>
+
+                    <label for="mobile_wt">Weight</label>
+                    <input type="text" class="form-control" id="mobile_wt" name="mobile_wt" placeholder="grams" ngModel
+                        required><br>
+
+                    <label for="n_cores">Number of cores</label>
+                    <select class="form-control" id="n_cores" name="n_cores" ngModel required>
+                        <option *ngFor="let coresOption of coresOptions" [value]="coresOption">{{ coresOption }}
+                        </option>
+                    </select><br>
+
+                    <label for="pc">Primary camera</label>
+                    <input type="text" class="form-control" id="pc" name="pc" placeholder="megapixels" ngModel
+                        required><br>
+
+                    <label for="px_height">Height</label>
+                    <input type="text" class="form-control" id="px_height" name="px_height" placeholder="pixels" ngModel
+                        required><br>
+
+                    <label for="px_width">Width</label>
+                    <input type="text" class="form-control" id="px_width" name="px_width" placeholder="pixels" ngModel
+                        required><br>
+
+                    <label for="ram">RAM</label>
+                    <input type="text" class="form-control" id="ram" name="ram" placeholder="MB" ngModel required><br>
+
+                    <label for="sc_h">Screen height</label>
+                    <input type="text" class="form-control" id="sc_h" name="sc_h" placeholder="centimeters" ngModel
+                        required><br>
+
+                    <label for="sc_w">Screen width</label>
+                    <input type="text" class="form-control" id="sc_w" name="sc_w" placeholder="centimeters" ngModel
+                        required><br>
+
+                    <label for="talk_time">Talk time</label>
+                    <input type="text" class="form-control" id="talk_time" name="talk_time" placeholder="hours" ngModel
+                        required><br>
+
+                    <label for="three_g">3G</label>
+                    <select class="form-control" id="three_g" name="three_g" ngModel required>
+                        <option *ngFor="let specOption of specOptions" [value]="specOption">{{ specOption }}</option>
+                    </select><br>
+
+                    <label for="touch_screen">Touch screen</label>
+                    <select class="form-control" id="touch_screen" name="touch_screen" ngModel required>
+                        <option *ngFor="let specOption of specOptions" [value]="specOption">{{ specOption }}</option>
+                    </select><br>
+
+                    <label for="wifi">WiFi</label>
+                    <select class="form-control" id="wifi" name="wifi" ngModel required>
+                        <option *ngFor="let specOption of specOptions" [value]="specOption">{{ specOption }}</option>
+                    </select><br>
+                    <hr>
+
+                    <label for="price_range">Price range</label>
+                    <p>Last but not least, enter the price range you expect the mobile phone with given
+                        specifications will be in.</p>
+                    <p>Reminder:</p>
+                    <p>0 - low cost</p>
+                    <p>1 - medium cost</p>
+                    <p>2 - high cost</p>
+                    <p>3 - very high cost</p>
+                    <select class="form-control" id="price_range" name="price_range" ngModel required>
+                        <option *ngFor="let priceRangeOption of priceRangeOptions" [value]="priceRangeOption">{{
+                            priceRangeOption }}
+                        </option>
+                    </select><br>
+
+                    <button type="button" class="btn btn-default" (click)="form.reset()">New
+                        configuration</button>
+                    <button type="submit" class="btn btn-success" [disabled]="!form.form.valid">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="parent">
+    <div class="col-md-4">
+        <div [hidden]="!submitted">
+            <h2>Classification results</h2>
+            <hr>
+            <h4>Mobile price for entered specifications will be in range: {{ result }}</h4>
+            <hr>
+            <p>Reminder:</p>
+            <p>0 - low cost</p>
+            <p>1 - medium cost</p>
+            <p>2 - high cost</p>
+            <p>3 - very high cost</p>
+            <button type="button" class="btn btn-primary" (click)="tryAgain()">Try again</button>
+        </div>
+    </div>
+</div>

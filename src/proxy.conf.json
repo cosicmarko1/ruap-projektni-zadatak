@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "https://ussouthcentral.services.azureml.net/workspaces/80877ff97b434e3da6a95a6eac98e979/services/50e5a925b405444cbaa372d97fa664f7/execute?api-version=2.0&details=true",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}
